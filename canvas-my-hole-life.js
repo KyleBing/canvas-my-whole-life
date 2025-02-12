@@ -22,6 +22,8 @@ let LIFE_PHASE = [
 ]
 
 let LIFE_POINT = [
+    {name: '相机', dayIndex: '', date: '2024-05-31', dayRange: [], ageRange: [], color: 'black', text: ''},
+    {name: '摩托车', dayIndex: '', date: '2021-07-07', dayRange: [], ageRange: [], color: 'black', text: ''},
     {name: '摩托车', dayIndex: '', date: '2021-07-07', dayRange: [], ageRange: [], color: 'black', text: ''},
     {name: '汽车', dayIndex: '', date: '2023-01-20', dayRange: [], ageRange: [], color: 'black', text: ''},
     {name: '她', dayIndex: '', date: '2016-12-20', dayRange: [], ageRange: [], color: 'black', text: ''},
@@ -216,12 +218,19 @@ class CanvasMyHoleLife {
                 this.LIFE_PHASE.forEach(phase => {
                     if (i >= phase.dayRange[0] && i < phase.dayRange[1]){
                         if (i === phase.dayRange[0]){ // 每个阶段的第一个字
+
+                            // 阴影
+                            c.shadowColor = 'rgba(255,255,255,1)'
+                            c.shadowBlur = 2
+                            c.shadowOffsetX = 2
+                            c.shadowOffsetY = 2
+
                             finalFont = `bold 40px sans-serf`
                             finalText = `${phase.name} ( ${phase.ageRange[1] - phase.ageRange[0]}年 )`
                             finalColor = phase.color
-                            tempX = tempX + 15
+                            tempX = tempX + 25
                             tempY = tempY - 5
-                            drawDot(c, {x:tempX - 8,y:tempY},2,3,'',phase.color)
+                            drawDot(c, {x:tempX - 18,y:tempY},6,3,'',phase.color)
                         } else {
                             finalColor = phase.color
                             finalText = phase.text
@@ -285,7 +294,7 @@ class CanvasMyHoleLife {
         ctx.fillText(`${name}`, x + 18, y - 5)
         ctx.font = 'bold 16px sans-serf'
         ctx.fillText(`${datePoint}`, x + 20, y + 20)
-        drawDot(ctx, {x:x + 8,y:y - 5},5,3,'',color)
+        drawDot(ctx, {x:x + 8,y:y - 5},5,2,'',color)
     }
 
     animationStart(){
