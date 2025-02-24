@@ -1,8 +1,8 @@
 /**
  * 我的一生
- * MyHoleLife
+ * MyWholeLife
  * @author: KyleBing(kylebing@163.com)
- * @github: https://github.com/KyleBing/canvas-my-hole-life
+ * @github: https://github.com/KyleBing/canvas-my-whole-life
  * @date-init: 2023-12-06
  * @date-update: 2023-12-06
  * @version: v0.0.1
@@ -22,17 +22,17 @@ let LIFE_PHASE = [
 ]
 
 let LIFE_POINT = [
-    {name: '相机', dayIndex: '', date: '2024-05-31', dayRange: [], ageRange: [], color: 'black', text: ''},
+    {name: '相机',  dayIndex: '', date: '2024-05-31', dayRange: [], ageRange: [], color: 'black', text: ''},
     {name: '摩托车', dayIndex: '', date: '2021-07-07', dayRange: [], ageRange: [], color: 'black', text: ''},
     {name: '摩托车', dayIndex: '', date: '2021-07-07', dayRange: [], ageRange: [], color: 'black', text: ''},
-    {name: '汽车', dayIndex: '', date: '2023-01-20', dayRange: [], ageRange: [], color: 'black', text: ''},
-    {name: '她', dayIndex: '', date: '2016-12-20', dayRange: [], ageRange: [], color: 'black', text: ''},
-    {name: '75岁', dayIndex: '', date: '2066-03-09', dayRange: [], ageRange: [], color: 'gray', text: ''},
-    {name: '70岁', dayIndex: '', date: '2061-03-09', dayRange: [], ageRange: [], color: 'gray', text: ''},
-    {name: '60岁', dayIndex: '', date: '2051-03-09', dayRange: [], ageRange: [], color: 'gray', text: ''},
-    {name: '50岁', dayIndex: '', date: '2041-03-09', dayRange: [], ageRange: [], color: 'gray', text: ''},
-    {name: '40岁', dayIndex: '', date: '2031-03-09', dayRange: [], ageRange: [], color: 'gray', text: ''},
-    {name: '30岁', dayIndex: '', date: '2021-03-09', dayRange: [], ageRange: [], color: 'gray', text: ''},
+    {name: '汽车',  dayIndex: '', date: '2023-01-20', dayRange: [], ageRange: [], color: 'black', text: ''},
+    {name: '她',    dayIndex: '', date: '2016-12-20', dayRange: [], ageRange: [], color: 'black', text: ''},
+    {name: '75岁',  dayIndex: '', date: '2066-03-09', dayRange: [], ageRange: [], color: 'gray', text: ''},
+    {name: '70岁',  dayIndex: '', date: '2061-03-09', dayRange: [], ageRange: [], color: 'gray', text: ''},
+    {name: '60岁',  dayIndex: '', date: '2051-03-09', dayRange: [], ageRange: [], color: 'gray', text: ''},
+    {name: '50岁',  dayIndex: '', date: '2041-03-09', dayRange: [], ageRange: [], color: 'gray', text: ''},
+    {name: '40岁',  dayIndex: '', date: '2031-03-09', dayRange: [], ageRange: [], color: 'gray', text: ''},
+    {name: '30岁',  dayIndex: '', date: '2021-03-09', dayRange: [], ageRange: [], color: 'gray', text: ''},
 ]
 
 
@@ -42,11 +42,11 @@ let LIFE_POINT_MINE = [
     {name: '爷爷去世', dayIndex: '', date: '2018-12-14', dayRange: [], ageRange: [], color: 'black', text: ''},
     {name: '父亲去世', dayIndex: '', date: '2021-03-03', dayRange: [], ageRange: [], color: 'black', text: ''},
     {name: '奶奶去世', dayIndex: '', date: '2023-07-23', dayRange: [], ageRange: [], color: 'black', text: ''},
-    {name: '75岁', dayIndex: '', date: '2066-03-09', dayRange: [], ageRange: [], color: 'gray', text: ''},
+    {name: '75岁',    dayIndex: '', date: '2066-03-09', dayRange: [], ageRange: [], color: 'gray',  text: ''},
 
 ]
 
-class CanvasMyHoleLife {
+class CanvasMyWholeLife {
     /**
      * Timeline
      * @param name {String}主题名
@@ -70,7 +70,7 @@ class CanvasMyHoleLife {
         this.LIFE_PHASE = LIFE_PHASE
 
         this.dateBirthString = '1991-03-09 05:46:00'
-        this.holeLifeAge = 75
+        this.wholeLifeAge = 75
 
 
 
@@ -98,11 +98,11 @@ class CanvasMyHoleLife {
         }
     }
 
-    applyLifeConfig(dateBirthString, holeLifeAge, newLifePhase, newLifePoint){
+    applyLifeConfig(dateBirthString, wholeLifeAge, newLifePhase, newLifePoint){
         this.LIFE_PHASE = newLifePhase.length > 0? newLifePhase : LIFE_PHASE
         this.LIFE_POINT = newLifePoint.length > 0? newLifePoint : LIFE_POINT
         dateBirthString ? this.dateBirthString = dateBirthString : '1991-03-09 05:46:00';
-        holeLifeAge ? this.holeLifeAge = holeLifeAge : 75;
+        wholeLifeAge ? this.wholeLifeAge = wholeLifeAge : 75;
         this.processDateArrayData()
         this.draw()
     }
@@ -112,8 +112,8 @@ class CanvasMyHoleLife {
         this.momentBirth = new moment(this.dateBirthString)
         this.daysPassed = this.momentNow.diff(this.momentBirth, 'days')
         this.momentDie = this.momentBirth.clone()
-        this.momentDie.add(this.holeLifeAge, 'year')
-        this.daysHoleLife = this.momentDie.diff(this.momentBirth, 'days')
+        this.momentDie.add(this.wholeLifeAge, 'year')
+        this.daysWholeLife = this.momentDie.diff(this.momentBirth, 'days')
         this.ageLeft = this.momentDie.diff(this.momentNow, 'year')
 
         this.LIFE_PHASE.forEach(item => {
@@ -177,7 +177,7 @@ class CanvasMyHoleLife {
         let lastPosY = 20
         const gapVertical = 15
         const gapHorizontal = 15
-        for (let i=0;i<this.daysHoleLife;i++){
+        for (let i=0; i<this.daysWholeLife; i++){
 
             lastPosX = lastPosX + gapHorizontal
             if (lastPosX + gapVertical > this.frame.width) {
@@ -247,7 +247,7 @@ class CanvasMyHoleLife {
         lastPosX = 20
         lastPosY = 20
         if (this.isShowDatePointer){
-            for (let i=0;i<this.daysHoleLife;i++) {
+            for (let i=0; i<this.daysWholeLife; i++) {
                 lastPosX = lastPosX + gapHorizontal
                 if (lastPosX + gapVertical > this.frame.width) {
                     lastPosX = 20
@@ -264,7 +264,7 @@ class CanvasMyHoleLife {
 
         // 展示 canvas 数据
         if (this.isShowCanvasInfo) {
-            showCanvasInfo(this.name, c, this.frame, this.daysHoleLife, this.daysPassed, this.ageLeft)
+            showCanvasInfo(this.name, c, this.frame, this.daysWholeLife, this.daysPassed, this.ageLeft)
         }
 
         if (this.isPlaying) {

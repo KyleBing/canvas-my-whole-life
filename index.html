@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <title>我的整个人生</title>
     <script src="moment.min.js"></script>
-    <script src="canvas-my-hole-life.js?v=20231209104325"></script>
+    <script src="canvas-my-whole-life.js?v=20250224141209"></script>
     <script>
         let dataPreset = getSearchData().v
-        let life = new CanvasMyHoleLife(
+        let life = new CanvasMyWholeLife(
             '我的整个人生',
             false,
             true,
@@ -80,8 +80,8 @@
         let newLifePhase = JSON.parse(document.querySelector('.date-phase-array').value || '[]')
         let newLifePoint = JSON.parse(document.querySelector('.date-point-array').value || '[]')
         let dateBirthString = document.querySelector('.date-birth').value.trim()
-        let holeLifeAge = document.querySelector('.date-die').value.trim()
-        life.applyLifeConfig(dateBirthString, Number(holeLifeAge), newLifePhase, newLifePoint)
+        let wholeLifeAge = document.querySelector('.date-die').value.trim()
+        life.applyLifeConfig(dateBirthString, Number(wholeLifeAge), newLifePhase, newLifePoint)
     }
 </script>
 
