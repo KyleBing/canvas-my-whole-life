@@ -192,11 +192,11 @@ class CanvasMyWholeLife {
             if (this.daysPassed < i){ // 未过的时间
                 let finalText = '〇'
                 let finalColor = 'lightgray'
-                let finalFont = `14px sans-serf`
+                let finalFont = `14px sans-serif`
                 this.LIFE_PHASE.forEach(phase => {
                     if (i >= phase.dayRange[0] && i < phase.dayRange[1]){
                         if (i === phase.dayRange[0]){ // 每个阶段的第一个字
-                            finalFont = `bold 40px sans-serf`
+                            finalFont = `bold 40px sans-serif`
                             finalText = `${phase.name} ( ${phase.ageRange[1] - phase.ageRange[0]}年 )`
                             finalColor = phase.color
                             tempX = tempX + 15
@@ -214,7 +214,7 @@ class CanvasMyWholeLife {
             } else { // 已过的日期
                 let finalText = '田'
                 let finalColor = 'black'
-                let finalFont = `14px sans-serf`
+                let finalFont = `14px sans-serif`
                 this.LIFE_PHASE.forEach(phase => {
                     if (i >= phase.dayRange[0] && i < phase.dayRange[1]){
                         if (i === phase.dayRange[0]){ // 每个阶段的第一个字
@@ -225,7 +225,7 @@ class CanvasMyWholeLife {
                             c.shadowOffsetX = 2
                             c.shadowOffsetY = 2
 
-                            finalFont = `bold 40px sans-serf`
+                            finalFont = `bold 40px sans-serif`
                             finalText = `${phase.name} ( ${phase.ageRange[1] - phase.ageRange[0]}年 )`
                             finalColor = phase.color
                             tempX = tempX + 25
@@ -279,9 +279,9 @@ class CanvasMyWholeLife {
         ctx.fillRect(x + 15, y + 8, 105, 20)
         ctx.fillRect(x + 10, y - 35, (130-10)/4*name.length + 10, 38)
         ctx.fillStyle = color
-        ctx.font = 'bold 30px sans-serf'
+        ctx.font = 'bold 30px sans-serif'
         ctx.fillText(`${name}`, x + 15, y - 5)
-        ctx.font = 'bold 16px sans-serf'
+        ctx.font = 'bold 16px sans-serif'
         ctx.fillText(`${datePoint}`, x + 20, y + 23)
         drawDot(ctx, {x:x + 8,y:y - 5},5,3,'',color)
     }
@@ -290,9 +290,9 @@ class CanvasMyWholeLife {
         ctx.fillRect(x + 15, y + 5, 105, 20)
         ctx.fillRect(x + 15, y - 31, (110-10)/4*name.length + 10, 32)
         ctx.fillStyle = color
-        ctx.font = 'bold 25px sans-serf'
+        ctx.font = 'bold 25px sans-serif'
         ctx.fillText(`${name}`, x + 18, y - 5)
-        ctx.font = 'bold 16px sans-serf'
+        ctx.font = 'bold 16px sans-serif'
         ctx.fillText(`${datePoint}`, x + 20, y + 20)
         drawDot(ctx, {x:x + 8,y:y - 5},5,2,'',color)
     }
@@ -332,7 +332,7 @@ function showCanvasInfo(name, ctx, frame, daysAll, daysPassed, ageLeft){
     ctx.save()
     ctx.beginPath()
     ctx.fillStyle = 'white'
-    ctx.font = '20px sans-serf'
+    ctx.font = '20px sans-serif'
     ctx.fillRect(10, frame.height - 55, 730, 30)
     ctx.fillStyle = 'black'
     ctx.fillText(`${name}  人生进度 ${daysPassed}/${daysAll} (${(daysPassed/daysAll * 100).toFixed(2)}%)  |  剩${daysAll - daysPassed}天 - ${ageLeft}年    1格 = 1天`, 20, frame.height - 32)
